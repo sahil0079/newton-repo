@@ -1,0 +1,70 @@
+.click {
+    background-color: red;
+    color: white;
+    border: 0;
+    letter-spacing: 0.4rem;
+    padding: 10px 20px;
+}
+
+.click:active {
+    transform: translateY(3px);
+}
+
+.container {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100ch;
+}
+
+.box-container.big {
+    width: 600px;
+    height: 600px;
+}
+
+.box-container.big .box {
+    transform: rotateZ(360deg);
+}
+
+.box-container {
+    height: 500px;
+    width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    justify-content: space-around;
+    transition: 0.6s ease-in-out;
+}
+
+.box {
+    background-size: 500px 500px;
+    background-image: url('https://media2.giphy.com/media/2rSeMwgxE1Nlttnh9J/giphy.gif?cid=ecf05e4718hmfncd8kfuhivm0fa2s8m55a7re1bwkabnnvmq&ep=v1_gifs_search&rid=giphy.gif&ct=g');
+    height: 125px;
+    width: 125px;
+    transition: 0.6s ease-in;
+}
+
+.box::after {
+    content: "";
+    background-color: brown;
+    position: absolute;
+    top: 8px;
+    right: -15px;
+    height: 100%;
+    width: 15px;
+    transform: skewY(45deg);
+
+}
+
+.box::before {
+    content: "";
+    background-color: brown;
+    position: absolute;
+    left: 8px;
+    bottom: -15px;
+    height: 15px;
+    width: 100%;
+    transform: skewX(45deg);
+}
