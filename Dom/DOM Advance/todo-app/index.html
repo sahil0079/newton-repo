@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO APP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="header" class="header">
+        <div>
+            <h1 id="header-title" class="header-title">TODO APP</h1>
+        </div>
+        <div>
+            <input type="text" id="filter" class="filter" placeholder="Search todos">
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="title">Add Todos</h2>
+        <form id="addForm">
+            <input type="text" id="todo" class="todo-input">
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+
+        <h2 class="title">Todos</h2>
+
+        <ul id="todos" class="todo-list">
+            <li class="todo-item">
+                Todo 1
+                <button class="delete-button">delete</button>
+            </li>
+            <li class="todo-item">
+                Todo 2
+                <button class="delete-button">delete</button>
+            </li>
+            <li class="todo-item">
+                Todo 3
+                <button class="delete-button">delete</button>
+            </li>
+            <li class="todo-item">
+                Todo 4
+                <button class="delete-button">delete</button>
+            </li>
+        </ul>
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
