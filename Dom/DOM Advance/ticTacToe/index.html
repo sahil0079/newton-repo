@@ -68,7 +68,7 @@
                 let row = Math.floor((id - 1) / 3)
                 //calculate the column index
                 let col = (id - 1) % 3
-                // console.log(row, col)
+                console.log(row, col)
 
                 //update the corresponding grid cell with the current player
 
@@ -78,8 +78,70 @@
 
                 moves++; //increment the moves count
 
+                //check the winner
+
+                if (checkWinner(currentPlayer)) { //check if the current player has won
+                    alert(`Congratulations! Player ${currentPlayer} wins.`)
+                    resetGame()
+                    return
+
+                }
+
+                //check the moves (if moves === 9 )
+
+                if (moves === 9) {
+                    alert('Draw: The match is drawn');
+                    resetGame()
+                    return
+                }
+
                 currentPlayer = currentPlayer === 1 ? 2 : 1; //switching the current player
             }
+        }
+
+        function checkWinner(player) {
+            //check for the rows
+            for (let row = 0; row < 3; row++) {
+                if (
+                    grid[row][0] === player &&
+                    grid[row][1] === player &&
+                    grid[row][2] === player
+                ) {
+                    return true
+                }
+            }
+            //check for columns
+            for (let col = 0; col < 3; col++) {
+                if (
+                    grid[0][col] === player &&
+                    grid[1][col] === player &&
+                    grid[2][col] === player
+                ) {
+                    return true
+                }
+            }
+            //check for diagonals
+            if (
+                (grid[0][0] === player && grid[1][1] === player && grid[2][2] === player) || (grid[0][2] === player && grid[1][1] === player && grid[2][0] === player)
+            ) {
+                return true
+            }
+
+            return false
+        }
+
+        function resetGame() {
+            currentPlayer = 1; //reset the current player to 1
+            moves = 0; //reset the moves to 0
+            grid = [ //reset the game grid to be empty
+                [0, 0, 0],
+                [0, 0, 0],
+                [0, 0, 0]
+            ]
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].innerText = ''; //reset the text of all button to be empty
+            }
+
         }
 
 
