@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <h1>Events</h1>
+
+    <div>
+        <ol id="categories">
+            <li id="mobiles">Mobiles</li>
+            <li id="electronics">Electronics</li>
+            <li id="clothing">Clothing</li>
+        </ol>
+    </div>
+
+    <script>
+        let categories = document.querySelector('#categories')
+
+        // categories.addEventListener('click', (e) => {
+
+        //     console.log(e.target.id)
+        //     window.location.href = '/' + e.target.id
+        // })
+
+        categories.addEventListener('click', (e) => {
+            console.dir(e.target.tagName)
+
+            if (e.target.tagName == 'LI') {
+                window.location.href = '/' + e.target.id
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>
