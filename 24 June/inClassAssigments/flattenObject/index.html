@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Flatten Object</h1>
+    <script>
+        // The function should iterate through the properties of the given object and flattens it into a single-level object by concatenating the parent string and the property key with an underscore ('_') separator.
+
+        // If a nested property is encountered, the function should call itself with the nested property and the updated parent string.
+
+        // If a property with a value, other than an object is encountered, it should be added to the resultObj object with the concatenated parent string and property key as the new key and the property value as the corresponding value.
+        let resultObj = {};
+        function flatTheObj(obj, parent) {
+            // Write your code here
+
+            console.log({ obj, parent })
+
+            for (let key in obj) {
+                // console.log('key', typeof (obj[key]))
+
+                if (typeof obj[key] === 'object' && obj[key] !== null) {
+                    //if the property is an object , recursively call the
+                    //function witht the  nested object and update the parent string
+
+                    flatTheObj(obj[key], `${parent}_${key}`);
+
+                } else {
+                    //if the property is not an object , add it to the resultObj witht the concatenated string
+                    resultObj[`${parent}_${key}`] = obj[key];
+                }
+            }
+            return resultObj;
+
+        }
+        let user = { "name": "Karan", "address": { "personal": "Delhi", "area": "CivilLines" }, "office": { "state": "Mumbai", "area": { "landmark": "Bandra" } } }
+        let parent = "user";
+        flatTheObj(user, parent)
+
+    </script>
+</body>
+
+</html>

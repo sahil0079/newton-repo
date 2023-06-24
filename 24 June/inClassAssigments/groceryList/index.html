@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Do not edit this you need to use JS to scrap prices and display their sum -->
+    <h1>Grocery List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Sr. No.</th>
+                <th>Title</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Item-1</td>
+                <td data-ns-test="price">100</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Item-2</td>
+                <td data-ns-test="price">200</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Item-3</td>
+                <td data-ns-test="price">2</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Item-4</td>
+                <td data-ns-test="price">1</td>
+            </tr>
+        </tbody>
+    </table>
+    <button onClick='calcTotal()'>Total</button>
+    <script>
+        //         Write a code in calcTotal to calculate the cost of all items and write it inside a row and append it to the table.
+
+        // The new row should have two columns one with Text Grand Total and the other should contain the total price along with an attribute data-ns-test=grandTotal, for example, <tr><td>Grand Total</td><td data-ns-test="grandTotal">303</td>
+
+        // If calcTotal is executed for the second time you have to update the last row with the new grand total price .
+        function calcTotal() {
+            //get all the price elements
+
+            const priceElements = document.querySelectorAll('[data-ns-test="price"]')
+
+            let totalPrice = 0;
+
+            priceElements.forEach((element) => {
+                const price = parseFloat(element.textContent);
+                // console.log(price)
+                totalPrice += price;
+            })
+
+            //remove the previous grandtotal if the row exists
+
+            const grandTotalRow = document.querySelector('[data-ns-test="grandTotal"]');
+            console.dir(grandTotalRow)
+
+            if (grandTotalRow) {
+                grandTotalRow.parentNode.remove()
+            }
+
+            //CREATE A NEW ROW FOR GRAND TOTAL
+
+
+            const newRow = document.createElement('tr');
+
+            newRow.innerHTML = ` 
+        <td>Grand Total</td><td data-ns-test="grandTotal">${totalPrice}</td>
+        `
+
+            //append the new row to 
+
+            const tableBody = document.querySelector('tbody');
+            tableBody.appendChild(newRow)
+            // console.log(priceElements)
+        }
+
+    </script>
+</body>
+
+</html>
