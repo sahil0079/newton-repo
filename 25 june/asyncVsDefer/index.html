@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- "https://javascript.info/article/script-async-defer/long.js"
+    "https://javascript.info/article/script-async-defer/small.js" -->
+
+
+    <p>....content loaded before script</p>
+    <script defer src="https://javascript.info/article/script-async-defer/long.js?speed=1">
+    </script>
+
+
+    <!-- that is not visible until script loads -->
+    <p>....content loaded after script</p>
+
+
+</body>
+
+</html>
