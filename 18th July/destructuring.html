@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Destructuring Assignment</h1>
+
+    <script>
+
+        //array Destructuring
+
+        // const numbers = [10, 20, 30];
+
+        // const [a, b, c] = numbers;
+
+        // console.log(a, b, c)
+
+        // const numbers = [10, 20, 30, 40, 50];
+
+        // const [a, b, ...rest] = numbers;
+
+        // console.log(a, b)
+        // console.log(rest)
+
+
+        //Object Destructuring
+
+        // const person = {
+        //     name: 'John',
+        //     age: 30,
+        //     city: 'Delhi',
+        // }
+
+        // const { name: personName, age: personAge } = person;
+
+        // console.log(personName, personAge)
+
+        // function printPersonInfo({ name, age }) {
+        //     console.log(`Name: ${name}`);
+        //     console.log(`Age: ${age}`);
+
+        // }
+        // printPersonInfo(person)
+
+
+        // const nestedArray = [10, [20, 30], 40];
+
+        // const [a, [b, c], d] = nestedArray;
+
+        // const [a, x, d] = nestedArray;
+
+        // const [b, c] = x;
+
+
+        // console.log(a, b, c, d)
+
+
+        // const person = {
+        //     name: 'John',
+        //     age: 30,
+        //     address: {
+        //         street: '123 main street',
+        //         city: 'Delhi',
+        //     }
+        // }
+
+        // const { name, age, address } = person;
+
+        // const { street, city } = address;
+
+        // const { name, age, address: { street, city } } = person;
+
+        // console.log(street, city)
+
+
+        //private members using symbols
+
+
+        // const _privateMember = Symbol('privateMember');
+
+        // console.log(_privateMember)
+
+        // class MyClass {
+        //     constructor() {
+        //         // console.log(this)
+        //         this[_privateMember] = 'This is a private member';
+        //     }
+
+        //     getPrivateMember() {
+        //         return this[_privateMember]
+        //     }
+        // }
+
+        // const myObject = new MyClass();
+
+        // console.log(myObject.getPrivateMember());
+
+        // console.log(myObject[_privateMember]);
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
