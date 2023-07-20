@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>IPL SEASON 2022</title>
+</head>
+
+<body>
+    <h1 class="title">Js</h1>
+
+    <script>
+
+        class Person {
+            constructor() {
+
+            }
+            greetings() {
+                console.log('Greetings')
+            }
+        }
+
+        let sayHiMixin = {
+            sayHi() {
+                alert(`Hello ${this.name}`)
+            },
+            sayBye() {
+                alert(`Bye ${this.name}`)
+
+            }
+        }
+
+        class User extends Person {
+            constructor(name) {
+                super()
+                this.name = name;
+            }
+
+        }
+
+
+
+        Object.assign(User.prototype, sayHiMixin)
+
+        // new User("John").sayHi()
+
+        console.log(User.prototype)
+
+        const user = new User('John');
+
+        user.sayHi();
+        // user.greetings();
+
+
+        //this is not inheritance but a simple method copying
+        //User can inherit from another class as well as borrow different methods
+
+    </script>
+</body>
+
+</html>
