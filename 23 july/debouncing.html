@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debouncing</title>
+</head>
+
+<body>
+    <h1>Debouncing</h1>
+    <input type="text" id="searchInput" placeholder="Search...">
+    <ul id="searchResults"></ul>
+</body>
+<script>
+
+    //simulating search function that fetches the result from the server
+
+    let count = 1;
+
+    function debounce(func, delay) {
+        let timerId;
+        return function (...args) {
+            clearTimeout(timerId);
+            timerId = setTimeout(function () {
+
+                func(...args)
+            }, delay)
+        }
+    }
+    function searchApi(query) {
+
+
+        //suppose that we r getting results from the server
+        //normally u would use fetch , ajax or axioss
+        console.log('apicalls', count)
+        const results = [
+            `Result 1 for ${query}`,
+            `Result 2 for ${query}`,
+            `Result 3 for ${query}`,
+        ]
+
+        updateSearchResults(results)
+        count++
+    }
+
+    function updateSearchResults(results) {
+        const searchResultsElement = document.getElementById('searchResults');
+        searchResultsElement.innerHTML = "";
+
+        for (const result of results) {
+            const li = document.createElement('li');
+            li.textContent = result;
+            searchResultsElement.appendChild(li);
+        }
+    }
+
+
+    const searchInput = document.getElementById('searchInput');
+
+    const debouncedSearchApi = debounce(searchApi, 500)
+
+    searchInput.addEventListener("input", function (event) {
+        const query = event.target.value;
+
+        // console.log('query', query)
+
+        debouncedSearchApi(query)
+    })
+
+</script>
+
+</html>
