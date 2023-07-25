@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>Movie Deck</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <header>
+        <a href="/">
+            <h1>Movie Deck</h1>
+        </a>
+
+    </header>
+
+    <!-- Create a seacrh bar with an inpit and a button -->
+    <div class="search-bar">
+        <input type="search" name="search" id="search-input" placeholder="Search by name.." autocomplete="off">
+        <button id="search-button">Search</button>
+    </div>
+
+    <!-- create a sorting options section with two buttons -->
+    <div class="sorting-options">
+        <button id="sort-by-date" class="active-sort">Sort by date (oldest to latest)</button>
+        <button id="sort-by-rating">Sort by rating (least to most)</button>
+    </div>
+
+    <!-- create two tabs all and favorite  -->
+
+    <div class="tabs">
+        <button id="all-tab" class="active-tab">All</button>
+        <button id="favourites-tab">Favourites</button>
+
+    </div>
+
+    <!-- movie list and pagination section -->
+
+    <div class="movie-list-pagination-btns">
+        <!-- Create a movie list section that displays movie in cards -->
+
+        <ul id="movies-list">
+            <li class="card">
+                <img class="poster"
+                    src="https://w7.pngwing.com/pngs/116/765/png-transparent-clapperboard-computer-icons-film-movie-poster-angle-text-logo-thumbnail.png"
+                    alt="movie-title">
+                <p class="title">movie-title</p>
+                <section class="vote-favoriteIcon">
+                    <section class="vote">
+                        <p class="vote-count">vote-count</p>
+                        <p class="vote-average">rating-count</p>
+                    </section>
+                    <i class="fa-regular fa-heart fa-2xl" id="favourite-icon"></i>
+                </section>
+            </li>
+            <li class="card">
+                <img class="poster"
+                    src="https://w7.pngwing.com/pngs/116/765/png-transparent-clapperboard-computer-icons-film-movie-poster-angle-text-logo-thumbnail.png"
+                    alt="movie-title">
+                <p class="title">movie-title</p>
+                <section class="vote-favoriteIcon">
+                    <section class="vote">
+                        <p class="vote-count">vote-count</p>
+                        <p class="vote-average">rating-count</p>
+                    </section>
+                    <i class="fa-regular fa-heart fa-2xl" id="favourite-icon"></i>
+                </section>
+            </li>
+            <li class="card">
+                <img class="poster"
+                    src="https://w7.pngwing.com/pngs/116/765/png-transparent-clapperboard-computer-icons-film-movie-poster-angle-text-logo-thumbnail.png"
+                    alt="movie-title">
+                <p class="title">movie-title</p>
+                <section class="vote-favoriteIcon">
+                    <section class="vote">
+                        <p class="vote-count">vote-count</p>
+                        <p class="vote-average">rating-count</p>
+                    </section>
+                    <i class="fa-regular fa-heart fa-2xl" id="favourite-icon"></i>
+                </section>
+            </li>
+            <li class="card">
+                <img class="poster"
+                    src="https://w7.pngwing.com/pngs/116/765/png-transparent-clapperboard-computer-icons-film-movie-poster-angle-text-logo-thumbnail.png"
+                    alt="movie-title">
+                <p class="title">movie-title</p>
+                <section class="vote-favoriteIcon">
+                    <section class="vote">
+                        <p class="vote-count">vote-count</p>
+                        <p class="vote-average">rating-count</p>
+                    </section>
+                    <i class="fa-regular fa-heart fa-2xl" id="favourite-icon"></i>
+                </section>
+            </li>
+            <li class="card">
+                <img class="poster"
+                    src="https://w7.pngwing.com/pngs/116/765/png-transparent-clapperboard-computer-icons-film-movie-poster-angle-text-logo-thumbnail.png"
+                    alt="movie-title">
+                <p class="title">movie-title</p>
+                <section class="vote-favoriteIcon">
+                    <section class="vote">
+                        <p class="vote-count">vote-count</p>
+                        <p class="vote-average">rating-count</p>
+                    </section>
+                    <i class="fa-regular fa-heart fa-2xl" id="favourite-icon"></i>
+                </section>
+            </li>
+            <li class="card">
+                <img class="poster"
+                    src="https://w7.pngwing.com/pngs/116/765/png-transparent-clapperboard-computer-icons-film-movie-poster-angle-text-logo-thumbnail.png"
+                    alt="movie-title">
+                <p class="title">movie-title</p>
+                <section class="vote-favoriteIcon">
+                    <section class="vote">
+                        <p class="vote-count">vote-count</p>
+                        <p class="vote-average">rating-count</p>
+                    </section>
+                    <i class="fa-regular fa-heart fa-2xl" id="favourite-icon"></i>
+                </section>
+            </li>
+            <li class="card">
+                <img class="poster"
+                    src="https://w7.pngwing.com/pngs/116/765/png-transparent-clapperboard-computer-icons-film-movie-poster-angle-text-logo-thumbnail.png"
+                    alt="movie-title">
+                <p class="title">movie-title</p>
+                <section class="vote-favoriteIcon">
+                    <section class="vote">
+                        <p class="vote-count">vote-count</p>
+                        <p class="vote-average">rating-count</p>
+                    </section>
+                    <i class="fa-regular fa-heart fa-2xl" id="favourite-icon"></i>
+                </section>
+            </li>
+            <li class="card">
+                <img class="poster"
+                    src="https://w7.pngwing.com/pngs/116/765/png-transparent-clapperboard-computer-icons-film-movie-poster-angle-text-logo-thumbnail.png"
+                    alt="movie-title">
+                <p class="title">movie-title</p>
+                <section class="vote-favoriteIcon">
+                    <section class="vote">
+                        <p class="vote-count">vote-count</p>
+                        <p class="vote-average">rating-count</p>
+                    </section>
+                    <i class="fa-regular fa-heart fa-2xl" id="favourite-icon"></i>
+                </section>
+            </li>
+            <li class="card">
+                <img class="poster"
+                    src="https://w7.pngwing.com/pngs/116/765/png-transparent-clapperboard-computer-icons-film-movie-poster-angle-text-logo-thumbnail.png"
+                    alt="movie-title">
+                <p class="title">movie-title</p>
+                <section class="vote-favoriteIcon">
+                    <section class="vote">
+                        <p class="vote-count">vote-count</p>
+                        <p class="vote-average">rating-count</p>
+                    </section>
+                    <i class="fa-regular fa-heart fa-2xl" id="favourite-icon"></i>
+                </section>
+            </li>
+            <li class="card">
+                <img class="poster"
+                    src="https://w7.pngwing.com/pngs/116/765/png-transparent-clapperboard-computer-icons-film-movie-poster-angle-text-logo-thumbnail.png"
+                    alt="movie-title">
+                <p class="title">movie-title</p>
+                <section class="vote-favoriteIcon">
+                    <section class="vote">
+                        <p class="vote-count">vote-count</p>
+                        <p class="vote-average">rating-count</p>
+                    </section>
+                    <i class="fa-regular fa-heart fa-2xl" id="favourite-icon"></i>
+                </section>
+            </li>
+
+
+
+        </ul>
+
+        <div class="pagnination">
+            <button id="prev-button">Previous</button>
+            <button id="page-number-button">Current Page: 1</button>
+            <button id="next-button">Next</button>
+        </div>
+    </div>
+
+    <!-- footer section -->
+    <footer>
+        <p>&copy; 2023 Movie Deck</p>
+    </footer>
+</body>
+
+</html>
