@@ -1,11 +1,15 @@
-
+//to store movies data
 let movies = [];
+
+//store  page number
+let currentPage = 1;
+
 const API_KEY = 'f531333d637d0c44abc85b3e74db2186'
 
 //step 1
-async function fetchMovies() {
+async function fetchMovies(page) {
     try {
-        const response = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`);
+        const response = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${page}`);
 
         const result = await response.json();
         movies = result.results
@@ -19,7 +23,7 @@ async function fetchMovies() {
     }
 }
 
-fetchMovies()
+fetchMovies(currentPage)
 
 //step 2 
 
@@ -76,7 +80,7 @@ const renderMovies = (movies) => {
 
 
 }
-
+//sort by date
 const sortByDateButton = document.getElementById('sort-by-date');
 
 
@@ -117,3 +121,94 @@ function sortByDate() {
     renderMovies(sortedMovies)
 
 }
+
+//sort by rating
+const sortByRatingButton = document.getElementById('sort-by-rating');
+
+let firstSortByRatingClicked = true;
+
+function sortByRating() {
+    let sortedMovies;
+
+    if (firstSortByRatingClicked) {
+        //use the sort fucntion to create a new array of movies sorted based on votr average on ascending order
+        sortedMovies = movies.sort(function (a, b) {
+            return a.vote_average - b.vote_average
+        });
+        sortByRatingButton.textContent = "Sort by rating (most to least)";
+        firstSortByRatingClicked = false
+    } else if (!firstSortByRatingClicked) {
+        //use the sort fucntion to create a new array of movies sorted based on votr average on descending order
+        sortedMovies = movies.sort(function (a, b) {
+            return b.vote_average - a.vote_average
+        });
+        sortByRatingButton.textContent = "Sort by rating (least to most)";
+        firstSortByRatingClicked = true
+    }
+
+    renderMovies(sortedMovies);
+}
+
+sortByRatingButton.addEventListener('click', sortByRating)
+
+
+// pagination element
+
+const pagnination = document.querySelector("div.pagnination");
+const prevButton = document.querySelector("button#prev-button");
+const pageNumberButton = document.querySelector("button#page-number-button");
+const nextButton = document.querySelector("button#next-button");
+
+
+prevButton.addEventListener('click', () => {
+    //decrease the current pafe by 1;
+
+    currentPage--;
+
+    //fetch the movies for the previous page
+
+    fetchMovies(currentPage);
+
+    //update the page number button text
+
+    pageNumberButton.textContent = `Current Page: ${currentPage}`;
+
+    //Disable the previous button when the current page is 1
+
+    if (currentPage === 1) {
+        prevButton.disabled = true;
+        nextButton.disabled = false;
+    } else if (currentPage === 2) {
+        prevButton.disabled = false;
+        nextButton.disabled = false;
+    }
+
+});
+
+
+//lets assume that we only have pages from 1-3
+
+nextButton.addEventListener('click', () => {
+
+    //increase the current page by 1
+    currentPage++;
+
+    //fetch the movies based on current page
+    fetchMovies(currentPage);
+
+
+    //update current page number
+    pageNumberButton.textContent = `Current Page: ${currentPage}`;
+
+    //Disable the next  button when the current page is 3
+
+    if (currentPage === 3) {
+        prevButton.disabled = false;
+        nextButton.disabled = true;
+    } else if (currentPage === 2) {
+        prevButton.disabled = false;
+        nextButton.disabled = false;
+    }
+
+
+});
