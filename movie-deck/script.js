@@ -60,19 +60,19 @@ const renderMovies = (movies) => {
             <p class="vote-count">Votes: ${vote_count}</p>
             <p class="vote-average">Rating: ${vote_average}</p>
         </section>
-        <i class="fa-regular fa-heart fa-2xl" id="favourite-icon"></i>
+        <i class="favourite-icon fa-regular fa-heart fa-2xl" id="${title}"></i>
     </section>
 
-        `
+        `;
+
+        const favouriteIconBtn = listItem.querySelector('.favourite-icon');
+
+        favouriteIconBtn.addEventListener('click', (event) => {
+            alert('clicked')
+        })
+
+
         movieList.appendChild(listItem);
-
-
-
-
-
-
-
-
 
 
     })
@@ -162,19 +162,12 @@ const nextButton = document.querySelector("button#next-button");
 
 prevButton.addEventListener('click', () => {
     //decrease the current pafe by 1;
-
     currentPage--;
-
     //fetch the movies for the previous page
-
     fetchMovies(currentPage);
-
     //update the page number button text
-
     pageNumberButton.textContent = `Current Page: ${currentPage}`;
-
     //Disable the previous button when the current page is 1
-
     if (currentPage === 1) {
         prevButton.disabled = true;
         nextButton.disabled = false;
@@ -182,26 +175,19 @@ prevButton.addEventListener('click', () => {
         prevButton.disabled = false;
         nextButton.disabled = false;
     }
-
 });
 
 
 //lets assume that we only have pages from 1-3
 
 nextButton.addEventListener('click', () => {
-
     //increase the current page by 1
     currentPage++;
-
     //fetch the movies based on current page
     fetchMovies(currentPage);
-
-
     //update current page number
     pageNumberButton.textContent = `Current Page: ${currentPage}`;
-
     //Disable the next  button when the current page is 3
-
     if (currentPage === 3) {
         prevButton.disabled = false;
         nextButton.disabled = true;
@@ -209,6 +195,36 @@ nextButton.addEventListener('click', () => {
         prevButton.disabled = false;
         nextButton.disabled = false;
     }
-
-
 });
+
+
+//search by movie name API response
+
+const searchMovies = async (searchedMovie) => {
+    try {
+        const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${searchedMovie}&api_key=${API_KEY}&include_adult=false&language=en-US&page=1`);
+        const result = await response.json();
+        movies = result.results;
+        renderMovies(movies)
+    } catch (error) {
+        console.log(error);
+    }
+}
+//search elements
+
+const searchButton = document.getElementById('search-button');
+const searchInput = document.getElementById('search-input');
+
+searchButton.addEventListener('click', () => {
+    searchMovies(searchInput.value);
+    pagnination.style.display = 'none';
+
+})
+
+
+
+// `https://api.themoviedb.org/3/search/movie?query=${searchedMovie}&api_key=f531333d637d0c44abc85b3e74db2186&include_adult=false&language=en-US&page=1`
+
+
+//favourite icon
+
