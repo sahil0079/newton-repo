@@ -25,11 +25,42 @@ async function fetchMovies(page) {
 
 fetchMovies(currentPage)
 
+function getMovieNamesFromLocalStorage() {
+    const favouriteMovies = JSON.parse(localStorage.getItem("favouriteMovies"));
+
+    // console.log('favouriteMovies', favouriteMovies)
+
+    return favouriteMovies === null ? [] : favouriteMovies;
+
+}
+
+// getMovieNamesFromLocalStorage()
+function addMovieNameToLocalStorage(movieName) {
+    //add movie name to local storage
+    const favMoviesNames = getMovieNamesFromLocalStorage();
+    // localStorage.setItem(key, data);
+    localStorage.setItem("favouriteMovies", JSON.stringify([...favMoviesNames, movieName]));
+
+
+}
+
+function removeMovieNameFromLocalStorage(movieName) {
+    const favMoviesNames = getMovieNamesFromLocalStorage();
+
+    let filteredMoviesNames = favMoviesNames.filter((movie) => movie !== movieName);
+
+    localStorage.setItem("favouriteMovies", JSON.stringify(filteredMoviesNames));
+
+
+}
+
 //step 2 
 
 const renderMovies = (movies) => {
 
     const movieList = document.getElementById('movies-list');
+    const favMoviesNames = getMovieNamesFromLocalStorage();
+
 
     movieList.innerHTML = "";
 
@@ -60,7 +91,7 @@ const renderMovies = (movies) => {
             <p class="vote-count">Votes: ${vote_count}</p>
             <p class="vote-average">Rating: ${vote_average}</p>
         </section>
-        <i class="favourite-icon fa-regular fa-heart fa-2xl" id="${title}"></i>
+        <i class="favourite-icon ${favMoviesNames.includes(title) ? "fa-solid" : null} fa-regular fa-heart fa-2xl" id="${title}"></i>
     </section>
 
         `;
@@ -68,7 +99,21 @@ const renderMovies = (movies) => {
         const favouriteIconBtn = listItem.querySelector('.favourite-icon');
 
         favouriteIconBtn.addEventListener('click', (event) => {
-            alert('clicked')
+            // console.log(event.target)
+            const { id } = event.target;
+            // console.log(favouriteIconBtn.classList);
+            if (favouriteIconBtn.classList.contains("fa-solid")) {
+                //remove the movie name from local storage and from favourite array
+                removeMovieNameFromLocalStorage(id);
+                //remove this class from favouriteIconBtn
+                favouriteIconBtn.classList.remove("fa-solid");
+            } else {
+                //add the movie name to local storage and to favourite array
+                addMovieNameToLocalStorage(id);
+                //add this class to favouriteIconBtn
+                favouriteIconBtn.classList.add("fa-solid");
+
+            }
         })
 
 
@@ -228,3 +273,4 @@ searchButton.addEventListener('click', () => {
 
 //favourite icon
 
+// `https://api.themoviedb.org/3/search/movie?query=${movieName}&api_key=f531333d637d0c44abc85b3e74db2186&include_adult=false&language=en-US&page=1`
